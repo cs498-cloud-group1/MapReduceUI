@@ -6,7 +6,12 @@ const Home = props => {
     <div>
       <h3>Welcome to MapReduce with AWS Lambda! </h3>
       <div>
-        <Link to="/create"> Create a Map Reduce Job </Link>
+        <div>
+          <Link to="/create"> Create a Map Reduce Job </Link>
+        </div>
+        <div>
+          <Link to="/results"> View Results </Link>
+        </div>
       </div>
     </div>
   );

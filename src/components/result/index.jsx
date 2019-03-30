@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Result = props => {
-  const { resultId } = props.match.params;
+import * as api from '../../api';
 
-  return (
-    <div>{`Welcome to Result page ${
-      resultId ? `for result ${resultId}` : ''
-    }`}</div>
-  );
-};
+import '../common.scss';
+import './index.scss';
 
-export default Result;
+export default class ListResults extends Component {
+  state = {
+    job: undefined
+  };
+
+  componentDidMount() {
+    this.setState({ loading: true });
+    api
+      .getJob(this.props.match.params.resultId)
+      .then(job => this.setState({ job }))
+      .finally(() => this.setState({ loading: false }));
+  }
+
+  render() {
+    const job = this.state.job;
+    if (this.state.loading) {
+      return <div className="loader" />;
+    }
+    return (
+      <div className="result">
+        <pre>{JSON.stringify(job, null, 2)}</pre>
+      </div>
+    );
+  }
+}
