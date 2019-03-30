@@ -5,6 +5,7 @@ cache:
 install:
   - yarn install
 script:
+  - export PUBLIC_URL=https://cs498-cloud-group1.github.io/MapReduceUI/
   - yarn build
 deploy:
   provider: pages
