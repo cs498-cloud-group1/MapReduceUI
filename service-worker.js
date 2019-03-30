@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://cs498-cloud-group1.github.io/MapReduceUI/precache-manifest.8c6f3ef1c02768e32a780cccc179e28c.js"
+  "https://cs498-cloud-group1.github.io/MapReduceUI/precache-manifest.ab0b40f7a39d677a56a9d9551cae15e7.js"
 );
 
 workbox.clientsClaim();
