@@ -9,7 +9,7 @@ import CreateJob from './components/create-job';
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename="/MapReduceUI">
         <Route path="/" exact component={Home} />
         <Route path="/results/" exact component={ListResults} />
         <Route path="/results/:resultId" component={Result} />
