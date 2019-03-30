@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
 import * as api from '../../api';
 
 import './index.scss';
 
-export default class CreateJob extends Component {
+class CreateJob extends Component {
   state = {
     form: {
       jobName: '',
@@ -31,15 +32,16 @@ export default class CreateJob extends Component {
     api
       .createJob(this.state)
       .then(response => {
-        console.log(response);
         // go to result page now
+        const jobId = response.jobId || (response.Item && response.Item.jobId);
+        this.props.history.push('/result/' + jobId);
       })
       .catch(error => {
         alert(
           'There was an error submitting your job. Error message: \n' + error
         );
-      })
-      .finally(() => this.setState({ loading: false }));
+        this.setState({ loading: false });
+      });
   };
 
   render() {
@@ -114,3 +116,5 @@ export default class CreateJob extends Component {
     );
   }
 }
+
+export default withRouter(CreateJob);
