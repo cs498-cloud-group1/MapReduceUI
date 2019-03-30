@@ -31,7 +31,7 @@ class CreateJob extends Component {
     }
     this.setState({ loading: true });
     api
-      .createJob(this.state)
+      .createJob(this.state.form)
       .then(response => {
         // go to result page now
         const jobId = response.jobId || (response.Item && response.Item.jobId);
