@@ -36,7 +36,7 @@ export default class ListResults extends Component {
           </thead>
           <tbody>
             {jobs.map(job => (
-              <tr>
+              <tr key={job.jobId}>
                 <td>
                   <Link to={'/results/' + job.jobId}>
                     {job.jobName || 'missing'}
