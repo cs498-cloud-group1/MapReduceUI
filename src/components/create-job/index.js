@@ -4,6 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import * as api from '../../api';
 
+import '../common.scss';
 import './index.scss';
 
 class CreateJob extends Component {
@@ -34,7 +35,7 @@ class CreateJob extends Component {
       .then(response => {
         // go to result page now
         const jobId = response.jobId || (response.Item && response.Item.jobId);
-        this.props.history.push('/result/' + jobId);
+        this.props.history.push('/results/' + jobId);
       })
       .catch(error => {
         alert(
