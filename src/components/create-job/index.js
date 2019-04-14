@@ -1,26 +1,51 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
+import 'brace';
+import 'brace/mode/javascript';
+import 'brace/theme/chrome';
+import AceEditor from 'react-ace';
 
 import * as api from '../../api';
 
 import '../common.scss';
 import './index.scss';
 
+const defaultMap = `function map(key, value) {
+
+}`;
+
+const defaultReduce = `function reduce(key, values) {
+
+}`;
+
+const aceOptions = {
+  theme: 'chrome',
+  mode: 'javascript',
+  height: '150px',
+  highlightActiveLine: true,
+  setOptions: {
+    showLineNumbers: true,
+    tabSize: 2
+  },
+  editorProps: { $blockScrolling: true }
+};
+
 class CreateJob extends Component {
   state = {
     form: {
       jobName: '',
       url: '',
-      map: '',
-      reduce: ''
+      map: defaultMap,
+      reduce: defaultReduce
     },
     loading: false
   };
 
   handleChange = field => event => {
+    const val = event.target ? event.target.value : event;
     this.setState({
-      form: { ...this.state.form, [field]: event.target.value }
+      form: { ...this.state.form, [field]: val }
     });
   };
 
@@ -80,27 +105,31 @@ class CreateJob extends Component {
               </td>
             </tr>
             <tr>
-              <td>Map Function</td>
               <td>
-                function map(key, value) {'{'}
-                <textarea
-                  rows="10"
-                  value={this.state.form.map}
+                Map Function
+                <div className="info">Please use JavaScript</div>
+              </td>
+              <td>
+                <AceEditor
+                  name="map-function"
                   onChange={this.handleChange('map')}
+                  value={this.state.form.map}
+                  {...aceOptions}
                 />
-                {'}'}
               </td>
             </tr>
             <tr>
-              <td>Reduce</td>
               <td>
-                function reduce(key, values) {'{'}
-                <textarea
-                  rows="10"
-                  value={this.state.form.reduce}
+                Reduce Function
+                <div className="info">Please use JavaScript</div>
+              </td>
+              <td>
+                <AceEditor
+                  name="reduce-function"
                   onChange={this.handleChange('reduce')}
+                  value={this.state.form.reduce}
+                  {...aceOptions}
                 />
-                {'}'}
               </td>
             </tr>
             <tr>
