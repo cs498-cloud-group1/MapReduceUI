@@ -55,11 +55,11 @@ export default class ListResults extends Component {
               <div className="subHeader">
                 <div className="label">Created On:</div>
                 <div className="value">
-                  {new Date(createdAt).toDateString()}
+                  {new Date(createdAt).toLocaleString()}
                 </div>
                 <div className="label">Last Update:</div>
                 <div className="value">
-                  {new Date(updatedAt).toDateString()}
+                  {new Date(updatedAt).toLocaleString()}
                 </div>
               </div>
               <div>
