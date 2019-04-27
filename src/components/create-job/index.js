@@ -11,12 +11,12 @@ import * as api from '../../api';
 import '../common.scss';
 import './index.scss';
 
-const defaultMap = `function map(key, value) {
-
+const defaultMap = `function map(key, value, emit) {
+  //emit({ key: 'example', value: 'example-value' });
 }`;
 
-const defaultReduce = `function reduce(key, values) {
-
+const defaultReduce = `function reduce(key, values, emit) {
+  //emit({ key: 'example', value: 'example-result' });
 }`;
 
 const aceOptions = {
