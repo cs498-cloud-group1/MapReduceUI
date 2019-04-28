@@ -1,0 +1,47 @@
+.result__root {
+  .body {
+    padding: 25px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    margin: 25px;
+  }
+
+  .header {
+    border-bottom: 2px solid #b7b7b7;
+    margin: 5px 0;
+    padding: 5px 0;
+    display: flex;
+    flex-direction: row;
+
+    .status {
+      display: flex;
+      flex-direction: row;
+      align-self: center;
+      margin: 0 0 0 auto;
+
+      .value {
+        color: green;
+        font-weight: bold;
+        margin: 0 0 0 5px;
+      }
+    }
+
+    .jobName {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .subHeader {
+      font-size: 0.9em;
+      display: flex;
+      flex-direction: row;
+      color: rgba(0, 0, 0, 0.5);
+
+      .label {
+      }
+      .value {
+        margin: 0 10px 0 3px;
+        color: rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+}
