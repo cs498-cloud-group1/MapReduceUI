@@ -2,7 +2,7 @@ import axios from 'axios';
 import isArray from 'lodash/isArray';
 
 const jobsUrl =
-  'https://npbtinvj6l.execute-api.us-east-1.amazonaws.com/dev/jobs';
+  'https://xb6u8lsa7h.execute-api.us-east-1.amazonaws.com/dev/jobs';
 
 export function createJob(formVals) {
   return axios.post(jobsUrl, formVals).then(response => response.data);
