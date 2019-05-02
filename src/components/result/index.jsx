@@ -40,7 +40,7 @@ export default class ListResults extends Component {
       createdAt,
       updatedAt,
       status,
-      jobId,
+      // jobId,
       map,
       reduce,
       url,
