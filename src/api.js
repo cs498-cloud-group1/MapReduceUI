@@ -13,7 +13,7 @@ export function getJobs() {
 }
 
 export function getJob(jobId) {
-  const url = jobsUrl; // + '/' + jobId;
+  const url = jobsUrl + '/' + jobId;
   return axios.get(url).then(response => {
     const data = response.data;
     if (isArray(data)) {
