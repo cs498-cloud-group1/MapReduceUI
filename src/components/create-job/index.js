@@ -11,11 +11,11 @@ import * as api from '../../api';
 import '../common.scss';
 import './index.scss';
 
-const defaultMap = `function map(data, emit) {
+const defaultMap = `function map(line, emit) {
 
 }`;
 
-const defaultReduce = `function reduce(data, emit) {
+const defaultReduce = `function reduce(key, values, emit) {
 
 }`;
 
