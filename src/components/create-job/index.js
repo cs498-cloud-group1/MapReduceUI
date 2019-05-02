@@ -11,11 +11,11 @@ import * as api from '../../api';
 import '../common.scss';
 import './index.scss';
 
-const defaultMap = `function map(key, value) {
+const defaultMap = `function map(line, emit) {
 
 }`;
 
-const defaultReduce = `function reduce(key, values) {
+const defaultReduce = `function reduce(key, values, emit) {
 
 }`;
 
@@ -35,7 +35,8 @@ class CreateJob extends Component {
   state = {
     form: {
       jobName: '',
-      url: '',
+      bucket: '',
+      fileName: '',
       map: defaultMap,
       reduce: defaultReduce
     },
@@ -95,12 +96,22 @@ class CreateJob extends Component {
               </td>
             </tr>
             <tr>
-              <td>Data URL</td>
+              <td>Bucket Name</td>
               <td>
                 <input
-                  type="url"
+                  type="text"
                   value={this.state.form.url}
-                  onChange={this.handleChange('url')}
+                  onChange={this.handleChange('bucket')}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>File Name</td>
+              <td>
+                <input
+                  type="text"
+                  value={this.state.form.url}
+                  onChange={this.handleChange('fileName')}
                 />
               </td>
             </tr>
