@@ -24,12 +24,16 @@ export default class ListResults extends Component {
   };
 
   componentDidMount() {
+    this.refresh();
+  }
+
+  refresh = () => {
     this.setState({ loading: true });
     api
       .getJob(this.props.match.params.resultId)
       .then(job => this.setState({ job }))
       .finally(() => this.setState({ loading: false }));
-  }
+  };
 
   render() {
     const job = this.state.job || {};
@@ -40,10 +44,11 @@ export default class ListResults extends Component {
       createdAt,
       updatedAt,
       status,
-      // jobId,
+      jobId,
       map,
       reduce,
-      url,
+      bucket,
+      fileName,
       jobName
     } = job;
     return (
@@ -63,12 +68,33 @@ export default class ListResults extends Component {
                 </div>
               </div>
               <div>
-                Input: <a href={url}>{url}</a>
+                Bucket: {bucket}, File: {fileName}, job Id: {jobId}
               </div>
             </div>
             <div className="status">
-              <div>Status:</div>
-              <div className="value">{status ? status.toUpperCase() : ''}</div>
+              <div>
+                <div>
+                  Status:
+                  <span className="value">
+                    {status ? status.toUpperCase() : ''}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="refresh">
+              {status === 'done' ? (
+                <a
+                  href={
+                    'https://npbtinvj6l.execute-api.us-east-1.amazonaws.com/dev/results/' +
+                    jobId
+                  }
+                >
+                  {' '}
+                  Results{' '}
+                </a>
+              ) : (
+                <button onClick={this.refresh}> Refresh </button>
+              )}
             </div>
           </div>
           <div className="function">
